@@ -1,11 +1,12 @@
-About project
+## About project
 Shop 'Pronia'
 
-Used technologies
+## Used technologies
 MySQL
 JavaScript
 PHP, Laravel
-Installation
+
+##Installation
 Git clone https://github.com/nadya-arinich/SHOP
 Сd laravel
 Сomposer install
