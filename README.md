@@ -1,11 +1,24 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## About project
+Shop 'Pronia'
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Used technologies
+- ** MySQL*
+- ** JavaScript*
+- ** PHP, Laravel*
+
+## Installation
+- Git clone https://github.com/nadya-arinich/SHOP
+- Сd laravel
+- Сomposer install
+- Cоздать БД
+- Cоздать файл .env, в нём подкючиться к БД
+- php artisan migrate
+- Раскоментировать нужные сиды и выполнить. Папка database/seeders/DatabaseSeeder.php и запустить сиды на выполнение php artisan db:seed
+php artisan serve
+
+
+
+
 
 ## About Laravel
 
