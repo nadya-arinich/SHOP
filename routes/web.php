@@ -13,9 +13,27 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', [Controllers\BaseController::class, 'getIndex']);
-Route::get('/about',[Controllers\BaseController::class, 'about']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Auth::routes();
+Route::get('basket', [Controllers\BasketController::class, 'getIndex'])->name('basket');
+Route::post('basket/order',[Controllers\BasketController::class, 'postOder']);
+Route::get('basket/delete/{id}',[Controllers\BasketController::class, 'getDelete']);
+Route::get('catalog_add_product/{catalog}', [Controllers\CatalogController::class, 'addProduct'])->name('catalog_add_product');
+Route::get('catalog_delete_product/{catalog}', [Controllers\CatalogController::class, 'detachProduct']);
+Route::get('catalogs', [Controllers\CatalogController::class, 'getIndex'])->name('catalogs');
+Route::get('catalog/{catalog}', [Controllers\CatalogController::class, 'getOne'])->name('catalog');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('dashboard')->middleware(['auth', 'verified'])->controller(Controllers\HomeController::class)->group(function(){
+    Route::get('/', 'getIndex')->name('dashboard');
+    Route::post('/', 'postIndex');
+});
+
+require __DIR__.'/auth.php';
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
