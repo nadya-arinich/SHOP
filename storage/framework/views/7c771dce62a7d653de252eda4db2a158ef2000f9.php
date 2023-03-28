@@ -38,7 +38,7 @@
                                                 <th class="product-price">Цена</th>
                                                 </tr>
                                             </thead>
-                                            <?php $__currentLoopData = $basket; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tbody>
                                                 <tr>
                                                     <td class="product_id">
