@@ -7,13 +7,22 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
+        "inertiajs/inertia-laravel": "^0.6.3",
         "laravel/framework": "^9.19",
-        "laravel/sanctum": "^3.0",
+        "laravel/sanctum": "^2.8",
         "laravel/tinker": "^2.7",
-        "laravel/ui": "^4.1"
+        "mll-lab/laravel-graphiql": "^1.0",
+        "mll-lab/laravel-graphql-playground": "^2.6",
+        "munafio/chatify": "^1.5",
+        "nuwave/lighthouse": "^5.60",
+        "rebing/graphql-laravel": "^8.3",
+        "spatie/laravel-medialibrary": "^10.0.0",
+        "tcg/voyager": "^1.6",
+        "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
+        "laravel/breeze": "^1.14",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
