@@ -1,0 +1,1 @@
+components.menu-guest<?php /**PATH C:\OSPanel\domains\shop\storage\framework\views/e014377a21f12d72f9a37249760da1173577966f.blade.php ENDPATH**/ ?>
