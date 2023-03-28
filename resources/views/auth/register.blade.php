@@ -1,81 +1,70 @@
-@extends('layouts.app')
-@section('title','Регистрация')
-@section('content')
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+            <h3 class="breadcrumb-heading">Регистрация</h3>
+            </a>
+        </x-slot>
+        <div class="col-lg-6 pt-5 pt-lg-0">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <div class="login-form">
+                    <h4 class="login-title">Регистрация</h4>
+                        <div class="row">
+                        <!-- Name -->
+                            <div class="col-md-6 col-12">
+                                <x-input-label for="name" :value="__('Имя')" />
 
-    <main class="main-content">
-        <div class="breadcrumb-area breadcrumb-height" data-bg-image="images/breadcrumb/bg/1-1-1919x388.jpg">
-            <div class="container h-100">
-                <div class="row h-100">
-                    <div class="col-lg-12">
-                        <div class="breadcrumb-item">
-                            <h2 class="breadcrumb-heading">Регистрация</h2>
-                            <ul>
-                                <li>
-                                    <a href="{{ asset('/')}}">Главная</a>
-                                </li>
-                                <li>Регистрация</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="login-register-area section-space-y-axis-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 pt-5 pt-lg-0">
-                        <form method="POST" action="{{ route('register') }}">
-                            @csrf
-                            <div class="login-form">
-                                <h4 class="login-title">Register</h4>
-                                <div class="row">
-                                    <div class="col-md-6 col-12">
-                                        <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
 
-                                        @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-custom-size lg-size btn-pronia-primary">{{ __('Register') }}</button>
-                                    </div>
-                                </div>
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
-                        </form>
+
+                            <!-- Email Address -->
+                            <div class="col-md-6 col-12">
+                                <x-input-label for="email" :value="__('Email')" />
+
+                                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+
+                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            </div>
+
+                            <!-- Password -->
+                            <div class="col-md-6">
+                                <x-input-label for="password" :value="__('Пароль')" />
+
+                                <x-text-input id="password" class="block mt-1 w-full"
+                                type="password"
+                                name="password"
+                                required autocomplete="new-password" />
+
+                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div class="col-md-6">
+                                <x-input-label for="password_confirmation" :value="__('Повторить пароль')" />
+
+                                <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                                type="password"
+                                name="password_confirmation" required />
+
+                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                            </div>
+
+                            <div class="flex items-center justify-end mt-4">
+                                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                                {{ __('Готово?') }}
+                                </a>
+
+                                <x-primary-button class="btn btn-custom-size lg-size btn-pronia-primary">
+                                {{ __('Регистрация') }}
+                                </x-primary-button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div>    
             </div>
-        </div>
-    </main>
-    <!-- Main Content Area End Here -->
-
-@endsection
+        </form>
+    </x-auth-card>
+</x-guest-layout>
