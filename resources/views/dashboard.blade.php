@@ -24,29 +24,23 @@
                                         <table class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
-                                                <th class="product_id">ID-товара</th>
-                                                <th class="product-thumbnail">Изображение</th>
+                                                
                                                 <th class="cart-product-name">Наименование</th>
                                                 <th class="product-price">Цена</th>
                                                 </tr>
                                             </thead>
-                                            @foreach($products as $product)
+                                            @foreach($_COOKIE as $basket)
                                             <tbody>
                                                 <tr>
-                                                    <td class="product_id">
-                                                        <a href="{{asset('products/'. $product->id)}}"></a>
-                                                    </td>
-                                                    <td width="200px">
-                                                        <img src="{{asset('products/'.$product->picture)}}" width="100%">
-                                                    </td>
-                                                    <td class="product-name">{{$product->name}}</td>
-                                                    <td class="product-price">{{$product->price}} BYN</td>
+                                                    <td class="product-name"> {{$basket->$name}}</td>
+                                                    <td class="product-price">{{$basket->$price}} BYN</td>
                                                     
                                                 </tr>
                                             </tbody>
                                             @endforeach
                                         </table>
                                     </div>
+                                    
                                 </div>
                             </div>
                             
