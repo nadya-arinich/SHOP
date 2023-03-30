@@ -14,17 +14,7 @@ class HomeController extends Controller
 
     }
     public function postIndex(Request $request){
-        $user = Auth::user();
-        Profile::updateOrCreate(
-            ['user_id' => $user->id],
-            ['about' => $request->about]
-        );
-        if($request->hasFile('picture')){
-            $user->addMedia($request->picture)->toMediaCollection();
-        }
-
-        // return redirect()->back();
-
+        $user = Auth::user()->id;
         $basket = '';
         if (isset($_COOKIE['basket'])) {
             $basket = $_COOKIE['basket'];
@@ -33,15 +23,25 @@ class HomeController extends Controller
         $basket_arr = explode(',', $basket);
         $products = [];
         $sum = 0;
+        $name = $product->name;
+        $price = $product->price;
         foreach ($basket_arr as $key => $value) {
             if ($value != '') {
                 $value_arr = explode(':', $value);
                 $product = Product::find($value_arr[0]);
                 $products[] = $product;
+                
                 $sum+=$product->price;
             }
         }
+        
+        unset($_COOKIE['basket']);
+        setcookie("basket",'',time()-1, '/');
         return redirect()->back();
+
+        // return redirect()->back();
+
+        
         
     }
        
